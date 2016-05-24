@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
+
+    
+    <script>
+
+        var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
+
+        var jsonData = $.ajax({
+          url: 'http://localhost:5984/quito/_all_docs/?limit=5&include_docs=true',
+          data: {page: 1},
+          dataType: 'json',
+        }).done(function (results) {
+
+
+	     var count=results.total_rows;
+         
+
+          for(var i=0;i<count; i++){
+          	
+          	var user=results.rows[i].doc.user.screen_name;
+          	var texttweet=results.rows[i].doc.text;
+			 console.log(user);
+			console.log(texttweet);
+			
+			document.getElementById("tweet").innerHTML += "Usuario: "+user+"<br>"+", Tweet: "+texttweet+"<br>";			
+	      }
+      });
+
+    </script>
+
+  </head>
+  <body>
+    <div id="table_div" style="width: 100%;"></div>
+    
+    <div id="tweet" style="width: 100%;"></div>
+  </body>
+</html>
