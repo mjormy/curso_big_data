@@ -11,7 +11,7 @@
         var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
 
         var jsonData = $.ajax({
-          url: 'http://localhost:5984/quito/_all_docs/?limit=5&include_docs=true',
+          url: 'http://localhost:5984/quito/_all_docs/?limit=10&include_docs=true',
           data: {page: 1},
           dataType: 'json',
         }).done(function (results) {

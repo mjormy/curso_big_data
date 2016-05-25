@@ -13,7 +13,7 @@
         
         var dimension = "population";
         $.ajax({
-          url: "http://localhost:5984/victoria/_all_docs/?limit=100&include_docs=true",
+          url: "http://localhost:5984/tweets/_all_docs/?limit=100&include_docs=true",
           dataType: "JSON",
           type:"get"
         }).done(function(datos) {
