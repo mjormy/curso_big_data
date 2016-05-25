@@ -5,7 +5,7 @@
 import numpy
 from matplotlib import pyplot
 
-Calcular valores de los ejes
+#Calcular valores de los ejes
 x = numpy.linspace(0, 2 * numpy.pi, 100)
 y = numpy.sin(x)
 
