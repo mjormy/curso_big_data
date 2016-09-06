@@ -1,5 +1,5 @@
 # Curso BigData & Data Analytics by Handytec
-# Fecha: Marzo-2016
+# Fecha: Sep-2016
 # Descripcion: Programa que cosecha tweets desde la API de twitter usando tweepy
 
 import couchdb #Libreria de CouchDB (requiere ser instalada primero)
