@@ -1,0 +1,35 @@
+{
+   "settings":{
+      "number_of_shards":1,
+      "number_of_replicas":0
+   },
+   "mappings":{
+      "test-type":{
+         "properties":{
+            "date":{
+               "type":"date",
+               "format":"EE MMM d HH:mm:ss Z yyyy||dd/MM/yyyy||dd-MM-yyyy||date_optional_time"
+            },
+            "sentiment":{
+               "type":"string"
+            },
+            "subjectivity":{
+               "type":"double"
+            },
+            "author":{
+               "type":"string"
+            },
+            "tweet":{
+               "type":"string",
+           "index":"not_analyzed"
+            },
+            "text":{
+               "type":"string"
+            },
+            "polarity":{
+               "type":"double"
+            }
+         }
+      }
+   }
+}
