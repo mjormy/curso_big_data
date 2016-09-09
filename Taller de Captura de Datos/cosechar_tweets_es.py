@@ -10,7 +10,7 @@ import re
 from config import *
 
 # create instance of elasticsearch
-es = Elasticsearch()
+es = Elasticsearch(['http://localhost:9200'])
 
 
 class TweetStreamListener(StreamListener):
@@ -24,10 +24,10 @@ class TweetStreamListener(StreamListener):
         # pass tweet into TextBlob
         tweet = TextBlob(dict_data["text"])
 
-    print "Tweet captured - ID: " + str(dict_data["id"])
+    print("Tweet captured - ID: " + str(dict_data["id"]))
 
         # output sentiment polarity
-        print "Polarity: " + str(tweet.sentiment.polarity)
+        print("Polarity: " + str(tweet.sentiment.polarity))
 
         # determine if sentiment is positive, negative, or neutral
         if tweet.sentiment.polarity < 0:
@@ -38,11 +38,11 @@ class TweetStreamListener(StreamListener):
             sentiment = "positive"
 
         # output sentiment
-        print "Sentiment: " + sentiment
+        print("Sentiment: " + sentiment)
 
     cleanText = re.sub(r'^https?:\/\/.*[\r\n]*', '', dict_data["text"], flags=re.MULTILINE)
     cleanText = re.sub(r'^http?:\/\/.*[\r\n]*', '', cleanText, flags=re.MULTILINE)
-    print cleanText
+    print(cleanText)
 
         # add text and sentiment info to elasticsearch
         es.index(index="tweetsuio",
@@ -54,14 +54,14 @@ class TweetStreamListener(StreamListener):
                        "polarity": tweet.sentiment.polarity,
                        "subjectivity": tweet.sentiment.subjectivity,
                        "sentiment": sentiment})
-    print "Successfuly stored on ElasticSearch!"
-    print "------------------------------------"
+    print("Successfuly stored on ElasticSearch!")
+    print("------------------------------------")
 
         return True
 
     # on failure
     def on_error(self, status):
-        print status
+        print(status)
 
 if __name__ == '__main__':
 
